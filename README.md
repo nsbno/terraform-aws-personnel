@@ -37,7 +37,7 @@ The id and secret can be found in SSM-parameter-store at the following location 
 
 ```terraform
 module "app" {
-  source = "github.com/nsbno/terraform-aws-personnel?ref=d1c2000/external-app-client"
+  source = "github.com/nsbno/terraform-aws-personnel?ref=db719c8/external-app-client"
   
   cognito_central_user_pool_id = "eu-west-1_0AvVv5Wyk" // cognito-dev-pool
   cognito_central_account_id = "834626710667" // cognito-dev
