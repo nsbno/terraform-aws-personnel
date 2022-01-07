@@ -50,7 +50,7 @@ resource "time_sleep" "wait_for_credentials" {
   create_duration = "300s"
 
   triggers = {
-    config_hash = sha1(aws_s3_bucket_object.delegated-cognito-config[0].content)
+    config_hash = sha1(aws_s3_bucket_object.delegated-cognito-config.source_hash)
   }
 }
 
