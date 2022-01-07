@@ -56,7 +56,7 @@ resource "time_sleep" "wait_for_credentials" {
 
 # The client credentials that are stored in Central Cognito.
 data "aws_secretsmanager_secret_version" "microservice_client_credentials" {
-  depends_on = [aws_s3_bucket_object.delegated-cognito-config[0], time_sleep.wait_for_credentials[0]]
+  depends_on = [aws_s3_bucket_object.delegated-cognito-config, time_sleep.wait_for_credentials[0]]
   count = (var.cognito_central_enable && var.create_app_client) ? 1 : 0
   secret_id = local.central_cognito_secret_id
 }
