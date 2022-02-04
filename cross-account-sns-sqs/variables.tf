@@ -1,5 +1,5 @@
 variable "sns_arn" {
-  description = "The ARN for the SNS-topic that the created SQS should subscribe to."
+  description = "The ARN for the SNS-topic that the created SQS should subscribe to. If Account A is subscribing to a topic in Account B, account B must give Account A account wide root permission"
   type        = string
 }
 
