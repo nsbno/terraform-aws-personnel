@@ -18,6 +18,31 @@ module "example-user" {
 ```
 </details>
 
+### Cross-account sns to sqs subscription
+
+
+<details>
+  <summary>Example</summary>
+
+```terraform
+  
+module "example-user" {
+  source = "github.com/nsbno/terraform-aws-personnel?ref=d1c2000/external-user"
+  
+  name_prefix = "example-user"
+  ssm_prefix = "/external/user"
+}
+
+module "example_queue" {
+  source = "github.com/nsbno/terraform-aws-personnel?ref=9bf51ee/cross-account-sns-sqs"
+  sns_arn = "arn:for:cross:account:topic"
+  name_prefix = "example_name_prefix"
+  name_sqs = "insert_cool_sqs_name"
+  ext_username = module.example-user.name // This is optional
+}
+```
+</details>
+
 ### External app client
 
 Create an app-client in central cognito for on-premise application integration. This app-client
