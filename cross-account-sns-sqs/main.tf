@@ -64,16 +64,9 @@ resource "aws_sqs_queue_policy" "sqs_policy" {
   queue_url = aws_sqs_queue.app_sqs.id
 }
 
-resource "aws_iam_user_policy" "subscribe_to_sns_policy" {
-  count = var.ext_username == "" ? 0 : 1
-  name = "allow_sns_cross_account_subscription"
-  policy = data.aws_iam_policy_document.subscribe_policy.json
-  user = var.ext_username
-}
-
 resource "aws_iam_user_policy" "allow_user_sqs_operations" {
   count = var.ext_username == "" ? 0 : 1
-  name = "allow_sqs_operations_cross_account_subscription"
+  name = "${var.name_sqs}-allow_sqs_operations"
   policy = data.aws_iam_policy_document.allow_user_sqs_actions.json
   user = var.ext_username
 }
